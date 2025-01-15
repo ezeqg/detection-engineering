@@ -5,6 +5,7 @@ Threshold set to 1000 TEST\\TEST
 """
 from = "now-6m"
 name = "IExcessive Web Traffic"
+risk_score = 25
 severity = "low"
 type = "threshold"
 rule_id = "11111111-4aeb-44ca-b24b-4a285d7b6ba1"
