@@ -2,8 +2,6 @@ name: TOML/MITRE validation
 
 on:
   push:
-    path:
-      - '**.toml'
   workflow_dispatch:
 
 jobs:
