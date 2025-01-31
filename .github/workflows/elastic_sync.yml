@@ -13,8 +13,32 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11.4'
-      - run: pip install requests
-      - run: python development/toml_to_json.py
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+
+      - name: Run update script
+        env:
+          ELASTIC_KEY: ${{ secrets.ELASTIC_KEY }}
+          CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          pip install requests
+          python development/update_alert.py
+
+
+
+      # NOTE: `since_last_remote_commit: true` is implied by default and falls back to the previous local commit.
+
+#      - name: List all changed files
+#        env:
+#          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+#        run: |
+#          for file in ${ALL_CHANGED_FILES}; do
+#            echo "$file was changed"
+#          done

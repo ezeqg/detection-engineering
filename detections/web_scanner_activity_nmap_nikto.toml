@@ -5,7 +5,7 @@ Detect Nmap or Nikto in user-agent string.
 """
 from = "now-6m"
 name = "Web Scanning Activity - Nmap and Nikto"
-risk_score = 100
+risk_score = 50
 severity = "low"
 type = "query"
 rule_id = "00000000-4aeb-44ca-b24b-4a285d7b6ba1"
