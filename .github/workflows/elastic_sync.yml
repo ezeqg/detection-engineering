@@ -2,6 +2,8 @@ name: Updating detections to Elastic
 
 on:
   push:
+    branches:
+      - main
     path: '**.toml'
   workflow_dispatch:
 
